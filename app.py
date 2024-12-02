@@ -13,7 +13,7 @@ def index():
 def submit1():
     data = request.form.get('data')
     # Отправляем POST запрос на Java backend
-    response = requests.post('http://localhost:8080/submit1', data=data)
+    response = requests.post('http://backend:8080/submit1', data=data)
     return render_template('index.html', result=response.text)
 
 
@@ -22,7 +22,7 @@ def submit1():
 def submit2():
     try:
         # Запрашиваем данные с Java backend
-        response = requests.get('http://localhost:8080/submit2')
+        response = requests.get('http://backend:8080/submit2')
         return render_template('index.html', file_content=response.text)
     except requests.exceptions.RequestException as e:
         return render_template('index.html', file_content="Ошибка соединения с backend")
